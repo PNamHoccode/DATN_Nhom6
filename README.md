@@ -1,4 +1,4 @@
-#DATN
+# DATN
 Tên dự án: Cửa hàng nội thất
 Mô tả ngắn: 
 + Người dùng: xem sản phẩm,xem chi tiết sản phẩm, thêm, xóa, sửa sản phẩm trong giỏ hàng, tìm kiếm theo tên,theo giá...v..
@@ -13,16 +13,16 @@ spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
 spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=update
 
-#Cài đặt xong truy cập http://localhost:8080 để chạy
+# Cài đặt xong truy cập http://localhost:8080 để chạy
 
-#Công nghệ sử dụng
+# Công nghệ sử dụng
 Spring Boot: Framework cho ứng dụng web
 Thymeleaf: Template engine cho giao diện
 Maven: Quản lý phụ thuộc và build dự án
 H2 Database / MySQL / PostgreSQL / SQL Server: Cơ sở dữ liệu
 
 -------------------------------------------------------------------------------------------------------------------------------------- -
-#DATN
+# DATN
 Project name: Furniture store
 Short description: 
 + Users: view products, view product details, add, delete, edit products in the cart, search by name, by price...etc.
@@ -37,9 +37,9 @@ spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
 spring.jpa.show-sql=true
 spring.jpa.hibernate.ddl-auto=update
 
-#After installation, go to http://localhost:8080 to run
+# After installation, go to http://localhost:8080 to run
 
-#Technology used
+# Technology used
 Spring Boot: Framework for web applications
 Thymeleaf: Template engine for interfaces
 Maven: Manage dependencies and build projects
