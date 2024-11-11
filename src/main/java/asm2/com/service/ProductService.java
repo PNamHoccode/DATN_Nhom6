@@ -31,7 +31,9 @@ public Product findById(Integer id) {
 	Product product = pdao.findById(id).get();
 	return product;
 }
-
+public List<Product> findByNameContaining(String name) {
+    return pdao.findByNameContaining(name);
+}
 
 
 public List<Product> findByCategoryId(String cid) {

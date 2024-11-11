@@ -18,9 +18,10 @@ public interface ProductDAO extends JpaRepository< Product,Integer> {
 	List<Product> findByCategoryId(String cid);
   
 	List<Product> findByPriceBetween(double minPrice,double maxPrice);
-
-
 	
+
+	 // Tìm kiếm sản phẩm theo tên, có chứa từ khóa
+    List<Product> findByNameContaining(String name);
 
 
 	

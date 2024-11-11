@@ -23,10 +23,7 @@ import asm2.com.service.ProductService;
 public class ProductRestController {
 	@Autowired
 	ProductService productservice;
-	
-	
-	
-	
+
 	@GetMapping()
 	public List<Product> getALL(){
 		return productservice.findALL();

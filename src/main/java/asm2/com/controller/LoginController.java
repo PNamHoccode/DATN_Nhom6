@@ -20,10 +20,17 @@ public class LoginController {
 	
 	
 	@RequestMapping("/security/login/success")
-	public String loginSuccess(Model model) {
-		model.addAttribute("mesage","Đăng nhập thành công!");
-		return "index";
+	public String loginSuccess(Model model, HttpSession session) {
+	    String username = (String) session.getAttribute("username");  // Lấy tên người dùng từ session
+	    if (username != null) {
+	        model.addAttribute("username", username);  // Truyền tên người dùng vào Model
+	        model.addAttribute("greeting", "Xin chào, " + username + "!"); // Thêm thông điệp chào mừng
+	    }
+
+	    model.addAttribute("message", "Đăng nhập thành công!");
+	    return "index";  // Chuyển đến trang chính
 	}
+
 	
 	
 	@RequestMapping("/security/login/error")

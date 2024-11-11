@@ -49,34 +49,28 @@ public class ShopController {
 	@Autowired
 	ProductDAO dao;
  
-	@RequestMapping("/product/list")	
-	// Tham số tùy chọn nên phải có RequestParam không thì hiển thị tất cả
-	// Optional đưa mã loại vào
-	public String shop (Model model , @RequestParam("cid") Optional<String> cid ,
-			@RequestParam("name") Optional<String> name
-			) {
-		// kiểm tra xem nếu có cid thì phân theo mã loại
-		if(cid.isPresent()) {
-			List<Product> list = service.findByCategoryId(cid.get());
-			  model.addAttribute("item",list);
-			  List<Category> category = pca.findALL();
-			  model.addAttribute("category",category);
-		}
-		
-		else {
+	@RequestMapping("/product/list")
+	public String shop(Model model, @RequestParam("cid") Optional<String> cid, @RequestParam("name") Optional<String> name) {
+	    List<Product> list;
+	    if (cid.isPresent()) {
+	        list = service.findByCategoryId(cid.get());
+	    } else if (name.isPresent()) {
+	        list = service.findByNameContaining(name.get());
+	    } else {
+	        list = service.findALL();
+	    }
 
-		// Ngược lại nếu không có cid thì hiển thị tất cả sản phẩm
-		List<Product> list = service.findALL();
-		  model.addAttribute("item",list);
-		  List<Category> category = pca.findALL();
-		  model.addAttribute("category",category);
+	    // Truyền danh mục vào model
+	    List<Category> category = pca.findALL();
+	    model.addAttribute("category", category); // Truyền danh mục vào model
 
-		 
-		  
-		}
-		 return "shop";
+	    model.addAttribute("item", list);
+	    model.addAttribute("name", name.orElse(""));  // Truyền giá trị của name vào model
+
+	    return "shop";
 	}
-	
+
+
 	
 	@RequestMapping("/product/sort")
 	public String sort(Model model,@RequestParam("field") Optional<String> field) {

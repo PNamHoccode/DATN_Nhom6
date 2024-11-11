@@ -31,7 +31,7 @@ public class IndexController {
 	public String trangchu(Model model   )
 	{ 
 		 List<Category> category = pca.findALL();
-		  model.addAttribute("categorys",category);
+		  model.addAttribute("category",category);
 		 List<Product> featuredProducts = service.findByDescriptionTrue();
 	        model.addAttribute("products", featuredProducts);
 	     List<Product> productsfalse = service.findByDescriptionFalse();
