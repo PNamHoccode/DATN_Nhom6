@@ -1,0 +1,46 @@
+<div class="container mt-2" ng-if="discountCodes">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Discount Amount</th>
+                <th>Valid From</th>
+                <th>Valid Until</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="code in pager.items">
+                <td>{{code.id}}</td>
+                <td>{{code.code}}</td>
+                <td>{{code.discountAmount | number:2}}</td>
+                <td>{{code.validFrom | date : 'dd-MM-yyyy'}}</td>
+                <td>{{code.validUntil | date : 'dd-MM-yyyy'}}</td>
+                <td>{{code.category.name}}</td>
+                <td>{{code.isActive ? 'Active' : 'Inactive'}}</td>
+                <td>
+                    <button ng-click="edit(code)" class="btn btn-primary btn-sm">Edit</button>
+                    <button ng-click="delete(code)" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+        <button ng-click="pager.first()" class="btn btn-outline-dark rounded-circle me-2">
+            <i class="ri-skip-left-line"></i>
+        </button>
+        <button ng-click="pager.prev()" class="btn btn-outline-dark rounded-circle me-2">
+            <i class="ri-arrow-left-s-line"></i>
+        </button>
+        <button class="btn btn-outline-dark rounded-pill me-2" disabled>{{pager.page + 1}}/{{pager.count}} trang</button>
+        <button ng-click="pager.next()" class="btn btn-outline-dark rounded-circle me-2">
+            <i class="ri-arrow-right-s-line"></i>
+        </button>
+        <button ng-click="pager.last()" class="btn btn-outline-dark rounded-circle me-2">
+            <i class="ri-skip-right-line"></i>
+        </button>
+    </nav>
+</div>

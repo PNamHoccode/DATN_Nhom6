@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/share/layout::dynamic(~{::main})}">
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>MultiShop - Online Shop Website Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+<!-- Favicon -->
+<link href="../img/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+	rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="../lib/animate/animate.min.css" rel="stylesheet">
+<link href="../lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="../css/style.css" rel="stylesheet">
+</head>
+<style>
+/* Style for filter container */
+.bg-light {
+    background-color: #f8f9fa !important;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for section title */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #343a40;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style for background span in section title */
+.section-title .bg-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    padding-right: 15px;
+}
+
+/* Input fields styling */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Make form inputs full-width */
+input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Margin for the button */
+button {
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+</style>
+
+<body>
+	<main th:fragment="main">
+
+		<!-- Breadcrumb Start -->
+		<div class="container-fluid">
+			<div class="row px-xl-5">
+				<div class="col-12">
+					<nav class="breadcrumb bg-light mb-30">
+						<a class="breadcrumb-item text-dark" href="#">Home</a> <a
+							class="breadcrumb-item text-dark" href="#">Shop</a> <span
+							class="breadcrumb-item active">Shop List</span>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Breadcrumb End -->
+
+
+		<!-- Shop Start -->
+		<div class="container-fluid">
+			<div class="row px-xl-5">
+				<!-- Shop Sidebar Start -->
+				<div class="col-lg-3 col-md-4">
+					<!-- Price Start -->
+					<h5 class="section-title position-relative text-uppercase mb-3">
+						<span class="bg-secondary pr-3">Filter by price</span>
+					</h5>
+					<div class="bg-light p-4 mb-30 shadow-lg rounded">
+						<form action="/product/searchprice" method="post">
+							<div class="form-group mb-3">
+								<input type="number" name="min" class="form-control"
+									placeholder="Min Price?" min="0" required>
+							</div>
+							<div class="form-group mb-3">
+								<input type="number" name="max" class="form-control"
+									placeholder="Max Price?" min="0" required>
+							</div>
+							<button type="submit" class="btn btn-primary w-100">Search</button>
+						</form>
+					</div>
+					<!-- Price End -->
+				</div>
+
+				<!-- Shop Sidebar End -->
+
+
+				<!-- Shop Product Start -->
+				<div class="col-lg-9 col-md-8">
+					<div class="row pb-3">
+						<div class="col-12 pb-1">
+							<div
+								class="d-flex align-items-center justify-content-between mb-4">
+								<div>
+									<button class="btn btn-sm btn-light">
+										<i class="fa fa-th-large"></i>
+									</button>
+									<button class="btn btn-sm btn-light ml-2">
+										<i class="fa fa-bars"></i>
+									</button>
+								</div>
+								<div class="ml-2">
+
+									<div class="btn-group">
+
+										<button type="button"
+											class="btn btn-sm btn-light dropdown-toggle"
+											data-toggle="dropdown">Sorting</button>
+
+										<div class="dropdown-menu dropdown-menu-right">
+											<a class="dropdown-item" th:each="l:${category}"
+												th:href="@{|/product/list?cid=${l.id}|}">[[${l.name}]]
+											</a>
+
+
+
+										</div>
+									</div>
+
+									<div class="btn-group ml-2">
+										<button type="button"
+											class="btn btn-sm btn-light dropdown-toggle"
+											data-toggle="dropdown">Showing</button>
+										<div class="dropdown-menu dropdown-menu-right">
+											<a class="dropdown-item" href="/product/sort?field=id">ID</a>
+											<a class="dropdown-item" href="/product/sort?field=name">Name</a>
+											<a class="dropdown-item" href="/product/sort?field=price">GIÁ
+												GIẢM DẦN </a> <a class="dropdown-item"
+												href="/product/sort?field=sale">GIÁ SALE GIẢM DẦN </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6 col-sm-6 pb-1" th:each="p:${item}">
+							<div class="product-item bg-light mb-4">
+								<div class="product-img position-relative overflow-hidden">
+									<img class="img-fluid w-100" th:src="@{|/img/${p.image}|}"
+										alt="">
+									<div class="product-action">
+										<a class="btn btn-outline-dark btn-square" th:href="@{/cart}"
+											th:attr="ng-click=@{|cart.add(${p.id})|}"><i
+											class="fa fa-shopping-cart"></i></a> <a
+											class="btn btn-outline-dark btn-square" href=""><i
+											class="far fa-heart"></i></a> <a
+											class="btn btn-outline-dark btn-square" href=""><i
+											class="fa fa-sync-alt"></i></a> <a
+											class="btn btn-outline-dark btn-square" href=""><i
+											class="fa fa-search"></i></a>
+									</div>
+								</div>
+								<div class="text-center py-4">
+									<a class="h6 text-decoration-none text-truncate"
+										th:href="@{|/detail/${p.id}|}" th:utext="${p.name}">Product
+										Name Goes Here</a>
+									<div
+										class="d-flex align-items-center justify-content-center mt-2">
+										<h5>
+											<font color="red">SALE:</font> $[[${p.price}]]
+										</h5>
+										<h6 class="text-muted ml-2">
+											<del>$[[${p.sale}]]</del>
+										</h6>
+									</div>
+									<div
+										class="d-flex align-items-center justify-content-center mb-1">
+										<small class="fa fa-star text-primary mr-1"></small> <small
+											class="fa fa-star text-primary mr-1"></small> <small
+											class="fa fa-star text-primary mr-1"></small> <small
+											class="fa fa-star text-primary mr-1"></small> <small
+											class="fa fa-star text-primary mr-1"></small> <small>(99)</small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Shop End -->
+	</main>
+
+
+
+</body>
+
+</html>

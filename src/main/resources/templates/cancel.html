@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancel</title>
+    <style>
+        /* To remove default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background: linear-gradient(135deg, #ff4b2b, #ff416c); /* New Gradient Background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        /* Container for message */
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 550px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            background-color:orange;
+            color: white;
+            font-size: 1.1em;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: yellow;
+            transform: scale(1.05);
+            color: orange;
+        }
+
+        .btn:active {
+            background-color: #004085;
+            transform: scale(1);
+        }
+
+        /* Cross Icon Styling */
+        .icon {
+            font-size: 60px;
+            color: #e74c3c;
+            margin-bottom: 25px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            &#10060; <!-- Cross Icon (X) -->
+        </div>
+        <h1>Payment Cancelled</h1>
+        <p>Your payment has been cancelled. Please try again or contact support for assistance.</p>
+        <a href="/" class="btn">Go Home</a>
+        <br>
+    </div>
+</body>
+</html>

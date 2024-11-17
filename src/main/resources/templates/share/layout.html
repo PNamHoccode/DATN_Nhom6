@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic( body)">
+
+<head>
+<meta charset="utf-8">
+<title>NỘI THẤT THỜI ĐẠI - Online Shop Website Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+<!-- Angular -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<!-- Favicon -->
+<link href="../../img/favicon.ico" rel="icon">
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+	rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="../../lib/animate/animate.min.css" rel="stylesheet">
+<link href="../../lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="../../css/style.css" rel="stylesheet">
+<link rel="icon" href="/img/logoicon.png">
+
+
+<style>
+#snowflakeContainer {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.snowflake {
+	padding-left: 15px;
+	font-size: 14px;
+	line-height: 24px;
+	position: fixed;
+	color: #ebebeb;
+	user-select: none;
+	z-index: 1000;
+}
+
+.snowflake:hover {
+	cursor: default;
+}
+</style>
+
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+
+	<!-- Topbar Start -->
+	<div th:replace="~{/share/menu::topbar} "></div>
+	<!-- Topbar End -->
+
+	<!-- Tích hợp zalo -->
+
+	<div id="snowflakeContainer"
+		style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+		<p class="snowflake"
+			style="font-size: 2em; animation: snowfall 10s infinite linear; position: absolute; opacity: 0.8;">❄</p>
+	</div>
+
+	<!--END Tích hợp zalo -->
+	<!-- Navbar Start -->
+	<div th:replace="~{/share/menu::navbar}"></div>
+	<!-- Navbar End -->
+
+	<main th:replace="${body}"></main>
+
+	<!-- Footer Start -->
+	<div th:replace="~{/share/menu::footer} "></div>
+	<!-- Footer End -->
+
+	<img alt="" src="/img/bottomleft.png"
+		style="position: fixed; bottom: 0; left: 0; z-index: 1000;">
+	<img alt="" src="/img/topleft.png"
+		style="position: fixed; top: 0; left: 0; z-index: 1000;">
+	<img alt="" src="/img/topright.png"
+		style="width:100px; position: fixed; top: 0; right: 0; z-index: 1000;">
+
+
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="../../lib/easing/easing.min.js"></script>
+	<script src="../../lib/owlcarousel/owl.carousel.min.js"></script>
+
+	<!-- Contact Javascript File -->
+	<script src="../../mail/jqBootstrapValidation.min.js"></script>
+	<script src="../../mail/contact.js"></script>
+
+	<!-- Template Javascript -->
+	<script src="/js/main.js"></script>
+	<script src="/js/shopping-cart-app.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<script
+		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger
+		chat-icon="https:&#x2F;&#x2F;i.imgur.com&#x2F;QVdmjNn.png"
+		intent="WELCOME" chat-title="Nội_Thất_Thời_Đại"
+		agent-id="f998dcbc-6b9e-4fc5-8812-e2592f8ed776" language-code="vi"></df-messenger>
+
+	<script>
+    // Set up the snowflake animation
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+    var transformProperty = getSupportedPropertyName(transforms);
+    var snowflakes = [];
+    var browserWidth, browserHeight;
+    var numberOfSnowflakes = 100; // Tăng số lượng bông tuyết
+    var resetPosition = false;
+
+    function setup() {
+        window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+        window.addEventListener("resize", setResetFlag, false);
+    }
+
+    setup();
+
+    function getSupportedPropertyName(b) {
+        for (var a = 0; a < b.length; a++) {
+            if (typeof document.body.style[b[a]] != "undefined") {
+                return b[a];
+            }
+        }
+        return null;
+    }
+
+    function Snowflake(b, a, d, e, c) {
+        this.element = b;
+        this.radius = a;
+        this.speed = d;
+        this.xPos = e;  // X-position bắt đầu ngẫu nhiên trong màn hình
+        this.yPos = c;
+        this.counter = 0;
+        this.sign = Math.random() < 0.5 ? 1 : -1;
+        this.element.style.opacity = 0.5 + Math.random();
+        this.element.style.fontSize = 6 + Math.random() * 50 + "px";  // Tăng kích thước bông tuyết
+    }
+
+    Snowflake.prototype.update = function () {
+        this.counter += this.speed / 2000; // Tăng tốc độ rơi
+        this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;  // Di chuyển nhẹ nhàng qua lại theo X
+        this.yPos += Math.sin(this.counter) / 30 + this.speed / 20; // Tăng tốc độ di chuyển dọc theo Y
+        setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+        
+        // Khi bông tuyết ra khỏi màn hình, đặt lại vị trí
+        if (this.yPos > browserHeight) {
+            this.yPos = -50;
+            this.xPos = getPosition(0, browserWidth);  // Đặt lại X ngẫu nhiên khi bông tuyết rơi hết
+        }
+    };
+
+    function setTranslate3DTransform(a, c, b) {
+        var d = "translate3d(" + c + "px, " + b + "px, 0)";
+        a.style[transformProperty] = d;
+    }
+
+    function generateSnowflakes() {
+        var b = document.querySelector(".snowflake");
+        var h = b.parentNode;
+        browserWidth = document.documentElement.clientWidth;
+        browserHeight = document.documentElement.clientHeight;
+        for (var d = 0; d < numberOfSnowflakes; d++) {
+            var j = b.cloneNode(true);
+            h.appendChild(j);
+            var e = getPosition(0, browserWidth);  // Đảm bảo X khởi tạo ngẫu nhiên trong chiều rộng màn hình
+            var a = getPosition(50, browserHeight); // Y bắt đầu từ 50px để bông tuyết không xuất hiện ngay trên đầu
+            var c = 2 + Math.random() * 5; // Tăng tốc độ di chuyển của bông tuyết
+            var g = 1 + Math.random() * 3; // Tăng độ lớn của bông tuyết
+            var f = new Snowflake(j, g, c, e, a);
+            snowflakes.push(f);
+        }
+        h.removeChild(b);
+        moveSnowflakes();
+    }
+
+    function moveSnowflakes() {
+        for (var b = 0; b < snowflakes.length; b++) {
+            var a = snowflakes[b];
+            a.update();
+        }
+        if (resetPosition) {
+            browserWidth = document.documentElement.clientWidth;
+            browserHeight = document.documentElement.clientHeight;
+            for (var b = 0; b < snowflakes.length; b++) {
+                var a = snowflakes[b];
+                a.xPos = getPosition(0, browserWidth);
+                a.yPos = getPosition(50, browserHeight);
+            }
+            resetPosition = false;
+        }
+        requestAnimationFrame(moveSnowflakes);
+    }
+
+    function getPosition(b, a) {
+        return Math.round(b + Math.random() * (a - b));  // Đảm bảo tuyết rơi ngẫu nhiên trên toàn bộ màn hình
+    }
+
+    function setResetFlag() {
+        resetPosition = true;
+    }
+</script>
+</body>
+</html>

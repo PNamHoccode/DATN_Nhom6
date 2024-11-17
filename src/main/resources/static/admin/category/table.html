@@ -1,0 +1,41 @@
+<div class="container mt-2" ng-if="cates.length > 0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category Name</th>
+                <th>Create Date</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in pager.items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+                <td><img src="/img/{{item.imgcategories}}" alt="Category Image" class="img-fluid" style="width: 100px; height: 100px;"></td>
+                <td>
+                    <button ng-click="editCategory(item)" class="btn btn-primary btn-sm">Edit</button>
+                    <button ng-click="deleteCategory(item)" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+        <button ng-click="changePage(0)" class="btn btn-outline-dark rounded-circle me-2" ng-disabled="pager.page === 0">
+            <i class="ri-skip-left-line"></i>
+        </button>
+        <button ng-click="changePage(pager.page - 1)" class="btn btn-outline-dark rounded-circle me-2" ng-disabled="pager.page === 0">
+            <i class="ri-arrow-left-s-line"></i>
+        </button>
+        <button class="btn btn-outline-dark rounded-pill me-2" disabled>{{pager.page + 1}}/{{pager.count}} trang</button>
+        <button ng-click="changePage(pager.page + 1)" class="btn btn-outline-dark rounded-circle me-2" ng-disabled="pager.page === pager.count - 1">
+            <i class="ri-arrow-right-s-line"></i>
+        </button>
+        <button ng-click="changePage(pager.count - 1)" class="btn btn-outline-dark rounded-circle me-2" ng-disabled="pager.page === pager.count - 1">
+            <i class="ri-skip-right-line"></i>
+        </button>
+    </nav>
+</div>

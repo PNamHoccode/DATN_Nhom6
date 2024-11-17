@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/share/layout::dynamic(~{::main})}">
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>MultiShop - Online Shop Website Template</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Free HTML Templates" name="keywords">
+<meta content="Free HTML Templates" name="description">
+
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+	rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<main th:fragment="main">
+
+		<!-- Breadcrumb Start -->
+		<div class="container-fluid">
+			<div class="row px-xl-5">
+				<div class="col-12">
+					<nav class="breadcrumb bg-light mb-30">
+						<a class="breadcrumb-item text-dark" href="#">Home</a> <a
+							class="breadcrumb-item text-dark" href="#">Shop</a> <span
+							class="breadcrumb-item active">Checkout</span>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Breadcrumb End -->
+
+
+		<!-- Checkout Start -->
+		<div class="container-fluid">
+			<div class="row px-xl-5">
+				<div class="col-lg-8">
+					<h5 class="section-title position-relative text-uppercase mb-3">
+						<span class="bg-secondary pr-3">Billing Address</span>
+					</h5>
+					<div class="bg-light p-30 mb-5">
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<div>Tên:</div>
+								<div class="form-control" id="username"
+									th:text="${#request.remoteUser}"></div>
+							</div>
+							<div class="form-group col-sm-6">
+								<div>Ngày đặt hàng:</div>
+								<div class="form-control">{{order.createDate | date :
+									'dd-MM-yyyy'}}</div>
+							</div>
+
+							<div class="row">
+
+								<div class="form-group col-sm-12">
+									<div>Địa chỉ giao hàng:</div>
+									<textarea ng-model="order.address" class="form-control"></textarea>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+					<div class="collapse mb-5" id="shipping-address">
+						<h5 class="section-title position-relative text-uppercase mb-3">
+							<span class="bg-secondary pr-3">Shipping Address</span>
+						</h5>
+						<div class="bg-light p-30"></div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<h5 class="section-title position-relative text-uppercase mb-3">
+						<span class="bg-secondary pr-3">Order Total</span>
+					</h5>
+					<div class="bg-light p-30 mb-5">
+						<h6 class="mb-3">Products</h6>
+						<div class="border-bottom" ng-repeat="item in cart.items">
+
+							<div class="d-flex justify-content-between">
+								<p>{{item.name}}</p>
+								<p>${{item.qty*item.price|number:2}}</p>
+							</div>
+
+						</div>
+						<div class="border-bottom pt-3 pb-2">
+							<div class="d-flex justify-content-between mb-3">
+								<h6>Subtotal</h6>
+								<h6>$150</h6>
+							</div>
+							<div class="d-flex justify-content-between">
+								<h6 class="font-weight-medium">Shipping</h6>
+								<h6 class="font-weight-medium">$10</h6>
+							</div>
+						</div>
+						<div class="pt-2">
+							<div class="d-flex justify-content-between mt-2">
+								<h5>Total</h5>
+								<h5>${{cart.amount|number:2}}</h5>
+							</div>
+						</div>
+					</div>
+					<div class="mb-5">
+						<h5 class="section-title position-relative text-uppercase mb-3">
+							<span class="bg-secondary pr-3">Payment</span>
+						</h5>
+						<div class="bg-light p-30">
+							<div class="form-group"
+								style="text-align: center; margin-top: 20px;">
+								<form method="post" th:action="@{/pay}">
+									<div class="custom-control custom-radio"
+										style="display: flex; align-items: center; justify-content: center; padding: 15px; border-radius: 8px; background-color: #f0f0f0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+										<input type="text" name="price"
+											style="margin-right: 15px; font-size: 16px; padding: 10px; border-radius: 4px; border: 1px solid #ccc; flex-grow: 1;" />
+										<button type="submit"
+											style="padding: 10px 20px; font-size: 16px; background-color: orange; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease;">
+											Paypal</button>
+									</div>
+								</form>
+							</div>
+
+							<div class="form-group" style="margin-top: 20px;">
+								<div class="custom-control custom-checkbox"
+									style="display: flex; align-items: center;">
+									<input type="checkbox" class="custom-control-input"
+										name="payment" id="directcheck"
+										style="margin-right: 10px; accent-color: #007bff; transition: background-color 0.3s ease, border-color 0.3s ease;">
+									<label class="custom-control-label" for="directcheck"
+										style="font-size: 18px; font-weight: normal; color: #333; cursor: pointer; transition: color 0.3s ease;">
+										Upon receipt </label>
+								</div>
+							</div>
+
+
+
+							<!-- Thêm ô nhập mã giảm giá -->
+							<div class="form-group">
+								<label for="discountCode">Discount Code</label> <input
+									type="text" class="form-control" id="discountCode"
+									ng-model="order.discountCode" placeholder="Enter discount code">
+								<button class="btn btn-secondary mt-2"
+									ng-click="applyDiscount()">Apply Discount</button>
+							</div>
+
+							<button class="btn btn-block btn-primary font-weight-bold py-3"
+								ng-click="order.purchase()">Place Order</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Checkout End -->
+	</main>
+
+
+
+
+
+</body>
+
+</html>

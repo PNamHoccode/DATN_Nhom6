@@ -1,0 +1,41 @@
+<div class="container mt-2" ng-if="productInformations.length > 0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Chủ Đề</th>
+                <th>Hình Ảnh</th>
+                <th>Nội Dung</th>
+                <th>Product</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="productInformation in pager.items">
+                <td>{{productInformation.id}}</td>
+                <td>{{productInformation.chude}}</td>
+                <td><img ng-src="{{productInformation.img}}" alt="{{productInformation.chude}}" width="100"></td>
+                <td>{{productInformation.noidung}}</td>
+                <td>{{productInformation.product.name}}</td>
+                <td>
+                    <button ng-click="edit(productInformation)" class="btn btn-primary btn-sm">Edit</button>
+                    <button ng-click="delete(productInformation)" class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+            <button ng-click="pager.first()" class="btn btn-outline-dark rounded-circle me-2">
+                <i class="ri-skip-left-line"></i>
+            </button>
+            <button ng-click="pager.prev()" class="btn btn-outline-dark rounded-circle me-2">
+                <i class="ri-arrow-left-s-line"></i></button>
+            <button class="btn btn-outline-dark rounded-pill me-2" disabled>{{pager.page + 1}}/{{pager.count}} trang</button>
+            <button ng-click="pager.next()" class="btn btn-outline-dark rounded-circle me-2">
+                <i class="ri-arrow-right-s-line"></i>
+            </button>
+            <button ng-click="pager.last()" class="btn btn-outline-dark rounded-circle me-2">
+                <i class="ri-skip-right-line"></i>
+            </button>
+        </nav>
+</div>
