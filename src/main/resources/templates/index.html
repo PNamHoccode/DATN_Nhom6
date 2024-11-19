@@ -60,15 +60,15 @@
 									class="carousel-caption d-flex flex-column align-items-center justify-content-center">
 									<div class="p-3" style="max-width: 700px;">
 										<h1
-											class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Premium
+											class="display-4 text-white mb-3 animate__animated animate__fadeInDown"th:text="#{premium.title}">Premium
 											Furniture</h1>
-										<p class="mx-md-5 px-5 animate__animated animate__bounceIn">We
+										<p class="mx-md-5 px-5 animate__animated animate__bounceIn"th:text="#{premium.desc}">We
 											offer high-quality furniture, from tables and chairs to
 											unique decorative pieces, enhancing the beauty and comfort of
 											your space.</p>
 										<a
 											class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-											href="#">Shop Now</a>
+											href="#" th:text="#{shop.now}">Shop Now</a>
 									</div>
 								</div>
 							</div>
@@ -80,16 +80,16 @@
 									class="carousel-caption d-flex flex-column align-items-center justify-content-center">
 									<div class="p-3" style="max-width: 700px;">
 										<h1
-											class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Home
+											class="display-4 text-white mb-3 animate__animated animate__fadeInDown" th:text="#{home.title}">Home
 											Furniture</h1>
-										<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Discover
+										<p class="mx-md-5 px-5 animate__animated animate__bounceIn" th:text="#{home.desc}">Discover
 											our wide range of premium furniture, from living room sets to
 											bedroom essentials, designed to enhance the comfort and style
 											of your home.</p>
 
 										<a
 											class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-											href="#">Shop Now</a>
+											href="#" th:text="#{shop.now}" >Shop Now</a>
 									</div>
 								</div>
 							</div>
@@ -101,16 +101,16 @@
 									class="carousel-caption d-flex flex-column align-items-center justify-content-center">
 									<div class="p-3" style="max-width: 700px;">
 										<h1
-											class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
+											class="display-4 text-white mb-3 animate__animated animate__fadeInDown"th:text="#{kids.title}">Kids
 											Furniture</h1>
-										<p class="mx-md-5 px-5 animate__animated animate__bounceIn">Explore
+										<p class="mx-md-5 px-5 animate__animated animate__bounceIn"th:text="#{kids.desc}">Explore
 											our exclusive collection of kids' furniture, designed to
 											create a fun, safe, and stylish environment for your little
 											ones. From playful beds to creative storage solutions, we
 											have everything you need to decorate their rooms.</p>
 										<a
 											class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-											href="#">Shop Now</a>
+											href="#" th:text="#{shop.now}">Shop Now</a>
 
 
 									</div>
@@ -123,17 +123,17 @@
 					<div class="product-offer mb-30" style="height: 200px;">
 						<img class="img-fluid" th:src="@{|/img/banner4.jpg|}" alt="">
 						<div class="offer-text">
-							<h6 class="text-white text-uppercase">Save 20%</h6>
-							<h3 class="text-white mb-3">Special Offer</h3>
-							<a href="" class="btn btn-primary">Shop Now</a>
+							<h6 class="text-white text-uppercase"th:text="#{offer.save}">Save 20%</h6>
+							<h3 class="text-white mb-3"th:text="#{offer.title}">Special Offer</h3>
+							<a href="" class="btn btn-primary"th:text="#{shop.now}">Shop Now</a>
 						</div>
 					</div>
 					<div class="product-offer mb-30" style="height: 200px;">
 						<img class="img-fluid" th:src="@{|/img/banner5.jpg|}" alt="">
 						<div class="offer-text">
-							<h6 class="text-white text-uppercase">Save 20%</h6>
-							<h3 class="text-white mb-3">Special Offer</h3>
-							<a href="" class="btn btn-primary">Shop Now</a>
+							<h6 class="text-white text-uppercase"th:text="#{offer.save}">Save 20%</h6>
+							<h3 class="text-white mb-3"th:text="#{offer.title}">Special Offer</h3>
+							<a href="" class="btn btn-primary" th:text="#{shop.now}">Shop Now</a>
 						</div>
 					</div>
 				</div>
@@ -144,36 +144,34 @@
 
 		<!-- Featured Start -->
 		<div class="container-fluid pt-5">
-			<div class="row px-xl-5 pb-3">
-				<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-					<div class="d-flex align-items-center bg-light mb-4"
-						style="padding: 30px;">
-						<h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-						<h5 class="font-weight-semi-bold m-0">Quality Product</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-					<div class="d-flex align-items-center bg-light mb-4"
-						style="padding: 30px;">
-						<h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-						<h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-					<div class="d-flex align-items-center bg-light mb-4"
-						style="padding: 30px;">
-						<h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-						<h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-					<div class="d-flex align-items-center bg-light mb-4"
-						style="padding: 30px;">
-						<h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-						<h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
-					</div>
-				</div>
-			</div>
+		<div class="row px-xl-5 pb-3">
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+        <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+            <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+            <h5 class="font-weight-semi-bold m-0" th:text="#{feature.quality}">Quality Product</h5>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+        <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+            <h1 class="fa fa-shipping-fast text-primary m-0 mr-2">
+</h1>
+            <h5 class="font-weight-semi-bold m-0" th:text="#{feature.shipping}">Safe transportation</h5>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+        <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+            <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+            <h5 class="font-weight-semi-bold m-0" th:text="#{feature.return}">Day Return</h5>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+        <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
+            <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+            <h5 class="font-weight-semi-bold m-0" th:text="#{feature.support}">24/7 Support</h5>
+        </div>
+    </div>
+</div>
+
 		</div>
 		<!-- Featured End -->
 
@@ -182,7 +180,7 @@
 		<div class="container-fluid pt-5">
 			<h2
 				class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-				<span class="bg-secondary pr-3">Categories</span>
+				<span class="bg-secondary pr-3" th:text="#{nav.loai}">Categories</span>
 			</h2>
 			<div class="row px-xl-5 pb-3">
 
@@ -211,7 +209,7 @@
 		<div class="container-fluid pt-5 pb-3">
 			<h2
 				class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-				<span class="bg-secondary pr-3">SẢN PHẨM NỔI BẬT </span>
+				<span class="bg-secondary pr-3" th:text="#{product.featured}">SẢN PHẨM NỔI BẬT </span>
 			</h2>
 			<div class="row px-xl-5">
 				<div class="col-lg-3 col-md-4 col-sm-6 pb-1"
@@ -219,7 +217,7 @@
 
 					<div class="product-item bg-light mb-4">
 						<div class="product-img position-relative overflow-hidden">
-							<img class="img-fluid w-100" th:src="@{|/img/${product.image}|}"
+							<img style="width: 523px; height: 300px" class="img-fluid w-100" th:src="@{|/img/${product.image}|}"
 								alt="">
 							<div class="product-action">
 								<a class="btn btn-outline-dark btn-square" th:href="@{/cart}"
@@ -298,7 +296,7 @@
 		<div class="container-fluid pt-5 pb-3">
 			<h2
 				class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-				<span class="bg-secondary pr-3">SẢN PHẨM MỚI </span>
+				<span class="bg-secondary pr-3" th:text="#{nav.productnew}">SẢN PHẨM MỚI </span>
 			</h2>
 			<div class="row px-xl-5">
 				<div class="col-lg-3 col-md-4 col-sm-6 pb-1"

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý tài khoản cá nhân</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Quản lý tài khoản cá nhân</h1>
+
+    <div>
+        <form id="profileForm">
+            <label>Username:</label>
+            <input type="text" id="username" readonly /><br>
+
+            <label>Fullname:</label>
+            <input type="text" id="fullname" /><br>
+
+            <label>Email:</label>
+            <input type="email" id="email" /><br>
+
+            <label>Photo:</label>
+            <input type="text" id="photo" /><br>
+
+            <button type="button" id="saveProfile">Lưu thông tin</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            const username = "currentUser"; // Thay bằng username thực tế từ session.
+
+            // Lấy thông tin tài khoản
+            $.ajax({
+                url: `/api/accounts/${username}`,
+                method: "GET",
+                success: function (data) {
+                    $("#username").val(data.username);
+                    $("#fullname").val(data.fullname);
+                    $("#email").val(data.email);
+                    $("#photo").val(data.photo);
+                },
+                error: function () {
+                    alert("Không thể tải thông tin tài khoản");
+                }
+            });
+
+            // Lưu thông tin tài khoản
+            $("#saveProfile").click(function () {
+                const updatedAccount = {
+                    fullname: $("#fullname").val(),
+                    email: $("#email").val(),
+                    photo: $("#photo").val()
+                };
+
+                $.ajax({
+                    url: `/api/accounts/${username}`,
+                    method: "PUT",
+                    contentType: "application/json",
+                    data: JSON.stringify(updatedAccount),
+                    success: function () {
+                        alert("Cập nhật thông tin thành công!");
+                    },
+                    error: function () {
+                        alert("Cập nhật thông tin thất bại!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

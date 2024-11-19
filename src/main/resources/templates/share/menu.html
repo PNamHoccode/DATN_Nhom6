@@ -50,7 +50,7 @@
 						<div class="btn-group">
 							<button type="button"
 								class="btn btn-sm btn-light dropdown-toggle"
-								data-toggle="dropdown">My Account</button>
+								data-toggle="dropdown" th:text="#{nav.taikhoan}">My Account</button>
 
 
 							<div class="dropdown-menu dropdown-menu-right">
@@ -69,7 +69,7 @@
 
 								<th:block th:unless="${#request.remoteUser}">
 									<a class="dropdown-item" type="button"
-										th:href="@{/security/login/form}">Sign in</a>
+										th:href="@{/security/login/form}" th:text="#{nav.dangnhap}">Sign in</a>
 
 								</th:block>
 
@@ -190,20 +190,20 @@
 						<div class="collapse navbar-collapse justify-content-between"
 							id="navbarCollapse">
 							<div class="navbar-nav mr-auto py-0">
-								<a th:href="@{/detail/index}" class="nav-item nav-link">Home</a>
-								<a th:href="@{/product/list}" class="nav-item nav-link">Shop</a>
-								<a th:href="@{/detail/1001}" class="nav-item nav-link">Shop
+								<a th:href="@{/detail/index}" class="nav-item nav-link" th:text="#{nav.trangchu}">Home</a>
+								<a th:href="@{/product/list}" class="nav-item nav-link"  th:text="#{nav.sanpham}">Shop</a>
+								<a th:href="@{/detail/1001}" class="nav-item nav-link" th:text="#{nav.chitiet}">Shop
 									Detail</a>
 								<div class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle active"
-										data-toggle="dropdown">Pages <i
+										data-toggle="dropdown" th:text="#{nav.trang}">Pages <i
 										class="fa fa-angle-down mt-1"></i></a>
 									<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
 										<a th:href="@{/cart}" class="dropdown-item active">Shopping
 											Cart</a> <a th:href="@{/detail/checkout}" class="dropdown-item">Checkout</a>
 									</div>
 								</div>
-								<a th:href="@{/detail/contact}" class="nav-item nav-link">Contact</a>
+								<a th:href="@{/detail/contact}" class="nav-item nav-link" th:text="#{nav.lienhe}">Contact</a>
 							</div>
 							<div
 								class="navbar-nav ml-auto py-0 d-none d-lg-flex align-items-center">
