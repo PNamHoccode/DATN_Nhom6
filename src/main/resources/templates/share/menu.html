@@ -50,7 +50,8 @@
 						<div class="btn-group">
 							<button type="button"
 								class="btn btn-sm btn-light dropdown-toggle"
-								data-toggle="dropdown" th:text="#{nav.taikhoan}">My Account</button>
+								data-toggle="dropdown" th:text="#{nav.taikhoan}">My
+								Account</button>
 
 
 							<div class="dropdown-menu dropdown-menu-right">
@@ -69,7 +70,8 @@
 
 								<th:block th:unless="${#request.remoteUser}">
 									<a class="dropdown-item" type="button"
-										th:href="@{/security/login/form}" th:text="#{nav.dangnhap}">Sign in</a>
+										th:href="@{/security/login/form}" th:text="#{nav.dangnhap}">Sign
+										in</a>
 
 								</th:block>
 
@@ -166,8 +168,7 @@
 							<!-- Kiểm tra và lặp qua danh sách category -->
 							<div th:each="cat : ${category}">
 								<a th:href="@{|/product/list?cid=${cat.id}|}"
-									class="nav-item nav-link" th:text="${cat.name}">
-									</a>
+									class="nav-item nav-link" th:text="${cat.name}"> </a>
 							</div>
 						</div>
 
@@ -190,9 +191,11 @@
 						<div class="collapse navbar-collapse justify-content-between"
 							id="navbarCollapse">
 							<div class="navbar-nav mr-auto py-0">
-								<a th:href="@{/detail/index}" class="nav-item nav-link" th:text="#{nav.trangchu}">Home</a>
-								<a th:href="@{/product/list}" class="nav-item nav-link"  th:text="#{nav.sanpham}">Shop</a>
-								<a th:href="@{/detail/1001}" class="nav-item nav-link" th:text="#{nav.chitiet}">Shop
+								<a th:href="@{/detail/index}" class="nav-item nav-link"
+									th:text="#{nav.trangchu}">Home</a> <a
+									th:href="@{/product/list}" class="nav-item nav-link"
+									th:text="#{nav.sanpham}">Shop</a> <a th:href="@{/detail/1001}"
+									class="nav-item nav-link" th:text="#{nav.chitiet}">Shop
 									Detail</a>
 								<div class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle active"
@@ -203,7 +206,8 @@
 											Cart</a> <a th:href="@{/detail/checkout}" class="dropdown-item">Checkout</a>
 									</div>
 								</div>
-								<a th:href="@{/detail/contact}" class="nav-item nav-link" th:text="#{nav.lienhe}">Contact</a>
+								<a th:href="@{/mail}" class="nav-item nav-link"
+									th:text="#{nav.lienhe}">Contact</a>
 							</div>
 							<div
 								class="navbar-nav ml-auto py-0 d-none d-lg-flex align-items-center">
