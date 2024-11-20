@@ -2,131 +2,150 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Thống kê sản phẩm</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Thống kê sản phẩm</title>
 
-    <link href="../../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="../../../../vendor/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../../../../vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link href="../../../../vendor/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <style>
-        /* Kiểu cho video nền */
-          /* Kiểu cho video nền */
-        .bg-video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
-        }
+<style>
+/* Kiểu cho video nền */
+/* Kiểu cho video nền */
+.bg-video-container {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+}
 
-        .bg-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Đảm bảo video phủ hết màn hình */
-        }
+.bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Đảm bảo video phủ hết màn hình */
+}
 
-        /* Kiểu cho form */
-        .login-form-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Căn giữa form */
-            background-color: rgba(255, 255, 255, 0.8); /* Nền trong suốt */
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 10; /* Đảm bảo form luôn hiển thị trên video */
-            width: 850px;
-        }
+/* Kiểu cho form */
+.login-form-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Căn giữa form */
+	background-color: rgba(255, 255, 255, 0.8); /* Nền trong suốt */
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+	z-index: 10; /* Đảm bảo form luôn hiển thị trên video */
+	width: 850px;
+}
 
-        .form-control-user {
-            border-radius: 50px;
-            padding: 10px 20px;
-        }
+.form-control-user {
+	border-radius: 50px;
+	padding: 10px 20px;
+}
 
-        .btn-user {
-            border-radius: 50px;
-            padding: 10px 0;
-            font-size: 16px;
-        }
+.btn-user {
+	border-radius: 50px;
+	padding: 10px 0;
+	font-size: 16px;
+}
 
-        .btn-primary {
-            background-color: #4e73df;
-            border: none;
-            transition: background-color 0.3s ease;
-        }
+.btn-primary {
+	background-color: #4e73df;
+	border: none;
+	transition: background-color 0.3s ease;
+}
 
-        .btn-primary:hover {
-            background-color: #2e59d9;
-        }
-    </style>
+.btn-primary:hover {
+	background-color: #2e59d9;
+}
+</style>
 
 </head>
 
 <body class="bg">
-    <div class="bg-video-container">
-        <!-- Video Nền -->
-       <video class="bg-video" autoplay muted loop>
-    <source th:src="@{/img/video.mp4}" type="video/mp4">
-</video>
+	<div class="bg-video-container">
+		<!-- Video Nền -->
+		<video class="bg-video" autoplay muted loop>
+			<source th:src="@{/img/video.mp4}" type="video/mp4">
+		</video>
 
 
-        <!-- Form Đăng Nhập Nằm Trên Video -->
-        <div class="login-form-container">
-            <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4" th:text="${mesage}"></h1>
-            </div>
-            <form class="user" th:action="@{/security/login}" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control form-control-user" placeholder="Enter Email Address..." name="username">
-                </div>
-                <div class="form-group">
-                    <input name="password" type="password" class="form-control form-control-user" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox small">
-                        <input name="remember-me" type="checkbox" class="custom-control-input"> 
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-user btn-block">Login</button>
-                <hr>
-                <a href="/oauth2/authorization/google" class="btn btn-google btn-user btn-block"> 
-                    <i class="fab fa-google fa-fw"></i> Login with Google
-                </a> 
-                <a href="/oauth2/authorization/google" class="btn btn-facebook btn-user btn-block"> 
-                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                </a>
-            </form>
-            <hr>
-            <div class="text-center">
-                <a class="small" href="">Forgot Password?</a>
-            </div>
-            <div class="text-center">
-                <a class="small" th:href="@{/security/register}">Create an Account!</a>
-            </div>
-            <div class="text-center">
-            <button> <a class="small" th:href="@{/}">Back Home!</a></button>
-               
-            </div>
-        </div>
-    </div>
+		<!-- Form Đăng Nhập Nằm Trên Video -->
+		<div class="login-form-container">
+			<div class="text-center">
+				<h1 class="h4 text-gray-900 mb-4" th:text="${mesage}"></h1>
+			</div>
+			<form class="user" th:action="@{/security/login}" method="post">
+				<div class="form-group">
+					<input type="text" class="form-control form-control-user"
+						placeholder="Enter Email Address..." name="username"
+						style="font-family: 'Arial', sans-serif; font-size: 16px; color: #333;">
+				</div>
+				<div class="form-group">
+					<input name="password" type="password"
+						class="form-control form-control-user" placeholder="Password"
+						style="font-family: 'Arial', sans-serif; font-size: 16px; color: #333;">
+				</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+				<div class="form-group">
+					<div class="custom-control custom-checkbox small">
+						<input name="remember-me" type="checkbox"
+							class="custom-control-input"> <label
+							class="custom-control-label" for="customCheck">Remember
+							Me</label>
+					</div>
+				</div>
+				<button class="btn btn-primary btn-user btn-block">Login</button>
+				<hr>
+				<a href="/oauth2/authorization/google"
+					class="btn btn-google btn-user btn-block"> <i
+					class="fab fa-google fa-fw"></i> Login with Google
+				</a> <a href="/oauth2/authorization/google"
+					class="btn btn-facebook btn-user btn-block"> <i
+					class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+				</a>
+			</form>
+			<hr>
+			<div class="text-center">
+				<a style="font-size: 20px;" class="small" href="">Forgot
+					Password?</a>
+			</div>
+			<div class="text-center">
+				<a style="font-size: 20px;" th:href="@{/security/register}">Create
+					an Account!</a>
+			</div>
+			<div class="text-center">
+				<button
+					style="padding: 12px 24px; background-color: #FFA500; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; display: inline-block; width: auto; text-align: center;">
+					<a class="small" th:href="@{/index}"
+						style="color: white; text-decoration: none; display: block;">Back
+						Home!</a>
+				</button>
+			</div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+		</div>
+	</div>
 
-    <!-- Custom scripts for all pages-->
-    <script src="../../../../vendor/js/sb-admin-2.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="../../../../vendor/jquery/jquery.min.js"></script>
+	<script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../../../../vendor/js/sb-admin-2.min.js"></script>
 
 </body>
 </html>
