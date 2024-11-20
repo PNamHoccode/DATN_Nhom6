@@ -29,26 +29,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	//Cung cấp nguồn dữ liệu đăng nhập
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth ) throws Exception{	
-		auth.userDetailsService(username ->{
-			try {
-			Account user = accountService.findById(username);
-			String password = pe.encode(user.getPassword());
-			String[] roles = user.getAuthorities().stream()
-					.map(er -> er.getRole().getId())
-					.collect(Collectors.toList()).toArray(new String[0]);
-			return User.withUsername(username).password(password).roles(roles).build();			
-		}catch (NoSuchElementException e) {
-			throw new UsernameNotFoundException(username + "not found!");
-		}
-	});
-}
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.userDetailsService(username -> {
+	        try {
+	            Account user = accountService.findById(username);
+	            if (user == null) {
+	                throw new UsernameNotFoundException(username + " not found!");
+	            }
+	            String[] roles = user.getAuthorities().stream()
+	                    .map(er -> er.getRole().getId())
+	                    .collect(Collectors.toList()).toArray(new String[0]);
+
+	            return User.withUsername(username)
+	                    .password(user.getPassword()) // mật khẩu đã mã hóa
+	                    .roles(roles)
+	                    .build();
+	        } catch (NoSuchElementException e) {
+	            throw new UsernameNotFoundException(username + " not found!");
+	        }
+	    }).passwordEncoder(pe); // Đảm bảo sử dụng BCryptPasswordEncoder
+	}
+
 	
 	//Phân quyền sử dụng 
 @Override
 protected void configure(HttpSecurity http) throws Exception{
 	http.csrf().disable();
 	http.authorizeRequests()
+	 .antMatchers("/home/**").permitAll()
 	   .antMatchers("/order/**").authenticated()
 	   .antMatchers("/admin/**").hasAnyRole("STAF","DIRE")
 	   .antMatchers("/rest/authorities").hasRole("DIRE")

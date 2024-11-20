@@ -10,10 +10,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @SuppressWarnings("serial")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "roles")
 public class Role  implements Serializable{
@@ -23,4 +27,12 @@ public class Role  implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "role")
 	List<Authority> authorities;
+	 public Role(String id) {
+	        this.id = id;
+	    }
+
+	    public Role(String id, String name) {
+	        this.id = id;
+	        this.name = name;
+	    }
 }

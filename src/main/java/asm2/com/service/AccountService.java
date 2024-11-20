@@ -17,6 +17,9 @@ public interface AccountService {
 	List<Account> getAdministrators();
 
 	List<Account> findAll();
+	void save(Account account);
+	
+
  
 	
   
